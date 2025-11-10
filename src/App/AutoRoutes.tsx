@@ -6,7 +6,7 @@ const routes = Object.entries(pages).map(([path, module]) => {
   const name = path.split("/")[1];
   const Element = (module as any).default;
   return {
-    path: name === "Home" ? "/" : `/${name.toLowerCase()}`,
+    path: name === "Home" ? "App/" : `App/${name.toLowerCase()}`,
     element: <Element />,
   };
 });

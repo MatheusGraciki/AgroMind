@@ -30,7 +30,9 @@
       "App/*": ["src/App/*"],
       "Components/*": ["src/Components/*"],
       "Utils/*": ["src/Utils/*"],
-      "Hooks/*": ["src/Hooks/*"]
+      "Hooks/*": ["src/Hooks/*"],
+      "Styles/*": ["src/styles/*"],
+      "Context/*": ["src/Context/*"]
     }
   },
   "include": ["src"]
