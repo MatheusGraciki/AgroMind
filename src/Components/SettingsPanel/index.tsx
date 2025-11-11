@@ -1,29 +1,33 @@
+import { useEffect } from "react";
 import { X } from "lucide-react";
+import ThemeSwitch from "Components/ThemeSwitch";
 import "./styles.scss";
 
 interface SettingsPanelProps {
   isOpen: boolean;
   onClose: () => void;
-  children?: React.ReactNode;
 }
 
-export default function SettingsPanel({ isOpen, onClose, children }: SettingsPanelProps) {
+export default function SettingsPanel({ isOpen, onClose }: SettingsPanelProps) {
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  }, [isOpen]);
+
   return (
-    <>
-      <div className={`overlay ${isOpen ? "open" : ""}`} onClick={onClose}></div>
+    <div className={`settings-panel ${isOpen ? "open" : ""}`}>
+      <div className="settings-panel__header">
+        <h2>Settings</h2>
+        <button className="close-btn" onClick={onClose} aria-label="Close settings">
+          <X size={20} />
+        </button>
+      </div>
 
-      <aside className={`settings-panel ${isOpen ? "open" : ""}`}>
-        <header className="settings-panel__header">
-          <h2>Settings</h2>
-          <button onClick={onClose} className="close-btn">
-            <X size={20} />
-          </button>
-        </header>
-
-        <div className="settings-panel__content">
-          {children}
+      <div className="settings-panel__content">
+        <div className="setting-item">
+          <span>Theme</span>
+          <ThemeSwitch />
         </div>
-      </aside>
-    </>
+      </div>
+    </div>
   );
 }

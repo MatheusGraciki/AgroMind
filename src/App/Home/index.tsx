@@ -1,9 +1,13 @@
 
+import SettingsPanel from "Components/SettingsPanel";
 import ThemeSwitch from "Components/ThemeSwitch";
+import { useState } from "react";
 
 export default function Home() {
 
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
-    <ThemeSwitch size="lg" />
+    <SettingsPanel isOpen={isOpen} onClose={() => {  setIsOpen(prevIsOpen => !isOpen)}} />
   );    
 }
