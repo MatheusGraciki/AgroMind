@@ -8,24 +8,20 @@ export default function ThemeSwitch({ size = "md", className }: ThemeSwitchProps
 
   const switchClass = classNames(
     "theme-switch",
-    `theme-switch--${theme}`,
     className,
-    {
-      "theme-switch--sm": size === "sm",
-      "theme-switch--lg": size === "lg",
-    }
+    `theme-switch--${size}`
   );
 
   return (
-    <button onClick={toggleTheme} className={switchClass} aria-label="Toggle theme">
-      <div className="switch-track">
-        <div className="switch-thumb">
-          {theme === "light" ? (
-            <span className="icon sun">☀️</span>
-          ) : (
-            <span className="icon moon">🌙</span>
-          )}
-        </div>
+    <button
+      onClick={toggleTheme}
+      className={switchClass}
+      aria-label="Toggle theme"
+    >
+      <div className={`switch-track ${theme}`}>
+        <div className="icon sun">☀️</div>
+        <div className="icon moon">🌙</div>
+        <div className={`switch-thumb ${theme}`}></div>
       </div>
     </button>
   );

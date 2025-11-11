@@ -11,61 +11,65 @@
     border-radius: 50px;
     background-color: #1e293b;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
     transition: background-color 0.3s ease;
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: opacity 0.3s ease;
+    }
+
+    .sun {
+      color: #facc15;
+    }
+
+    .moon {
+      color: #fef3c7;
+    }
   }
 
   .switch-thumb {
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background-color: white;
     position: absolute;
     top: 2px;
     left: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    transition: all 0.3s ease;
-  }
-
-  &.theme-switch--light .switch-track {
-    background-color: #e2e8f0;
-  }
-
-  &.theme-switch--light .switch-thumb {
-    left: 32px;
-    background-color: #facc15;
-    color: #1e293b;
-  }
-
-  &.theme-switch--dark .switch-thumb {
-    left: 2px;
     background-color: white;
-    color: #facc15;
+    transition: left 0.3s ease, background-color 0.3s ease;
+    z-index: 2;
   }
 
-  .icon {
-    pointer-events: none;
+  /* Tema claro */
+  .switch-track.light {
+    background-color: #e2e8f0;
+
+    .switch-thumb {
+      left: calc(100% - 28px);
+      background-color: #1e293b;
+    }
   }
 
-  &.theme-switch--sm .switch-track {
-    width: 40px;
-    height: 20px;
+  /* Tema escuro */
+  .switch-track.dark {
+    background-color: #1e293b;
+
+    .switch-thumb {
+      left: 2px;
+      background-color: #ffffff;
+    }
   }
 
-  &.theme-switch--sm .switch-thumb {
-    width: 16px;
-    height: 16px;
-  }
-
-  &.theme-switch--lg .switch-track {
-    width: 80px;
-    height: 40px;
-  }
-
-  &.theme-switch--lg .switch-thumb {
-    width: 34px;
-    height: 34px;
-  }
+  &.theme-switch--sm .switch-track { width: 40px; height: 20px; padding: 0 3px; }
+  &.theme-switch--sm .switch-thumb { width: 16px; height: 16px; }
+  &.theme-switch--lg .switch-track { width: 80px; height: 40px; padding: 0 6px; }
+  &.theme-switch--lg .switch-thumb { width: 34px; height: 34px; }
 }
